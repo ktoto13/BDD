@@ -5,8 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -21,12 +20,12 @@ public class DashboardPage {
     }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        var text = cards.findBy(text(cardInfo.getCardNumber().substring(12, 16))).getText();
+         var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
 
     public TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
-        cards.findBy(text(cardInfo.getCardNumber().substring(12, 16))).$("button").click();
+        cards.findBy(attribute("data-test-id", cardInfo.getTestId())).$("button").click();
         return new TransferPage();
     }
 
