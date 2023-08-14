@@ -13,7 +13,7 @@ public class DashboardPage {
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
     private SelenideElement heading = $("[data-test-id=dashboard]");
-    private ElementsCollection cards = $$(".list__item");
+    private ElementsCollection cards = $$(".list__item div");
 
     public DashboardPage() {
         heading.shouldBe(visible);
